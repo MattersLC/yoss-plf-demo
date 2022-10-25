@@ -42,7 +42,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Add a marker in Sydney and move the camera
         val oaxaca = LatLng(17.060590930692484, -96.72546242802322)
-        mMap.addMarker(MarkerOptions().position(oaxaca).title("Te amo Josselyn"))
+        mMap.addMarker(MarkerOptions().position(oaxaca).title("Oaxaca de Juárez"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(oaxaca))
 
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
