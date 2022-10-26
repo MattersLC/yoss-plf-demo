@@ -9,7 +9,10 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.maps.android.clustering.ClusterManager
 import ito.plf.yossdemo.databinding.ActivityMapsBinding
+import ito.plf.yossdemo.place.Place
+import ito.plf.yossdemo.place.PlaceRenderer
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -40,14 +43,44 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
+        // Add a marker in Oaxaca and move the camera
         val oaxaca = LatLng(17.060590930692484, -96.72546242802322)
         mMap.addMarker(MarkerOptions().position(oaxaca).title("Oaxaca de Juárez"))
+        val ITO = LatLng(17.077831563590298, -96.74437901266337)
+        mMap.addMarker(MarkerOptions().position(ITO).title("ITO"))
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(oaxaca))
 
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15f), 2000, null)
     }
+
+    /**
+     * Adds markers to the map with clustering support.
+     */
+    /*private fun addClusteredMarkers(googleMap: GoogleMap) {
+        // Create the ClusterManager class and set the custom renderer.
+        val clusterManager = ClusterManager<Place>(this, googleMap)
+        clusterManager.renderer =
+            PlaceRenderer(
+                this,
+                googleMap,
+                clusterManager
+            )
+
+        // Set custom info window adapter
+        clusterManager.markerCollection.setInfoWindowAdapter(MarkerInfoWindowAdapter(this))
+
+        // Add the places to the ClusterManager.
+        clusterManager.addItems(places)
+        clusterManager.cluster()
+
+        // Set ClusterManager as the OnCameraIdleListener so that it
+        // can re-cluster when zooming in and out.
+        googleMap.setOnCameraIdleListener {
+            clusterManager.onCameraIdle()
+        }
+    }*/
 
     private fun showUniversityMarkers(){
         
