@@ -8,6 +8,7 @@
         },
         "name": "Valencia Cyclery",
         "rating": 4.2,
+        "category": "bike's store",
         "vicinity": "1077 Valencia Street, San Francisco"
     },
     {
@@ -29,6 +30,7 @@
         },
         "name": "Box Dog Bikes",
         "rating": 4.4,
+        "category": "bike store",
         "vicinity": "494 14th Street, San Francisco"
     },
     {
@@ -40,6 +42,7 @@
         },
         "name": "IMSS Hospital General de Zona 1",
         "rating": 4.8,
+        "category": "hospital",
         "vicinity": "1901 Clement Street, San Francisco"
     },
 

@@ -51,9 +51,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Add a marker in Oaxaca and move the camera
         val oaxaca = LatLng(17.060590930692484, -96.72546242802322)
-        mMap.addMarker(MarkerOptions().position(oaxaca).title("Oaxaca de Juárez"))
-        val ITO = LatLng(17.077831563590298, -96.74437901266337)
-        mMap.addMarker(MarkerOptions().position(ITO).title("ITO"))
+        //mMap.addMarker(MarkerOptions().position(oaxaca).title("Oaxaca de Juárez"))
+        //val ITO = LatLng(17.077831563590298, -96.74437901266337)
+        //mMap.addMarker(MarkerOptions().position(ITO).title("ITO"))
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(oaxaca))
 

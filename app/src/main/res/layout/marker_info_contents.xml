@@ -41,11 +41,11 @@
         tools:text="123 Main Street"/>
 
     <TextView
-        android:id="@+id/text_view_rating"
+        android:id="@+id/text_view_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        tools:text="Rating: 3"/>
+        tools:text="Category: Universidad"/>
 
 </LinearLayout>
