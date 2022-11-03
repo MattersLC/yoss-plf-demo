@@ -2,22 +2,29 @@ package ito.plf.yossdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.clustering.ClusterManager
 import ito.plf.yossdemo.databinding.ActivityMapsBinding
 import ito.plf.yossdemo.place.Place
 import ito.plf.yossdemo.place.PlaceRenderer
+import ito.plf.yossdemo.place.PlacesReader
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
+    private val places: List<Place> by lazy {
+        PlacesReader(this).read()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,17 +36,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        mapFragment.getMapAsync { googleMap ->
+            //addMarkers(googleMap)
+            addClusteredMarkers(googleMap)
+
+            // Set custom info window adapter.
+            // googleMap.setInfoWindowAdapter(MarkerInfoWindowAdapter(this))
+        }
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
@@ -53,12 +59,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15f), 2000, null)
+        //addMarkers(mMap)
     }
 
     /**
      * Adds markers to the map with clustering support.
      */
-    /*private fun addClusteredMarkers(googleMap: GoogleMap) {
+    private fun addClusteredMarkers(googleMap: GoogleMap) {
         // Create the ClusterManager class and set the custom renderer.
         val clusterManager = ClusterManager<Place>(this, googleMap)
         clusterManager.renderer =
@@ -80,9 +87,24 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         googleMap.setOnCameraIdleListener {
             clusterManager.onCameraIdle()
         }
-    }*/
+    }
 
-    private fun showUniversityMarkers(){
-        
+    private val bicycleIcon: BitmapDescriptor by lazy {
+        val color = ContextCompat.getColor(this, R.color.colorPrimary)
+        BitmapHelper.vectorToBitmap(this, R.drawable.ic_directions_bike_black_24dp, color)
+    }
+
+    private fun addMarkers(googleMap: GoogleMap) {
+        places.forEach { place ->
+            val marker = googleMap.addMarker(
+                MarkerOptions()
+                    .title(place.name)
+                    .position(place.latLng)
+                    .icon(bicycleIcon)
+            )
+            // Set place as the tag on the marker object so it can be referenced within
+            // MarkerInfoWindowAdapter
+            marker?.tag = place
+        }
     }
 }

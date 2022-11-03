@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Programming/AndroidStudioProjects/YossDemo/app/src/main/res/drawable-v24/ic_directions_bike_black_24dp.xml" value="0.11" />
         <entry key="..\:/Programming/AndroidStudioProjects/YossDemo/app/src/main/res/layout/activity_maps.xml" value="0.1" />
+        <entry key="..\:/Programming/AndroidStudioProjects/YossDemo/app/src/main/res/layout/marker_info_contents.xml" value="0.3625" />
       </map>
     </option>
   </component>
