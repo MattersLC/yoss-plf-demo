@@ -4,147 +4,11 @@
             "location": {
                 "lat": 37.7557557,
                 "lng": -122.4208508
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7571005802915,
-                    "lng": -122.4195916697085
-                },
-                "southwest": {
-                    "lat": 37.75440261970851,
-                    "lng": -122.4222896302915
-                }
             }
         },
         "name": "Valencia Cyclery",
         "rating": 4.2,
         "vicinity": "1077 Valencia Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.80764569999999,
-                "lng": -122.4195251
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.8090395802915,
-                    "lng": -122.4181850697085
-                },
-                "southwest": {
-                    "lat": 37.8063416197085,
-                    "lng": -122.4208830302915
-                }
-            }
-        },
-        "name": "San Francisco Bicycle Rentals",
-        "rating": 4.5,
-        "vicinity": "425 Jefferson Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7757292,
-                "lng": -122.4119508
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7771379302915,
-                    "lng": -122.4106816697085
-                },
-                "southwest": {
-                    "lat": 37.7744399697085,
-                    "lng": -122.4133796302915
-                }
-            }
-        },
-        "name": "Mike's Bikes of San Francisco",
-        "rating": 4,
-        "vicinity": "1233 Howard Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.8060487,
-                "lng": -122.4206076
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.8074053802915,
-                    "lng": -122.4191828197085
-                },
-                "southwest": {
-                    "lat": 37.80470741970851,
-                    "lng": -122.4218807802915
-                }
-            }
-        },
-        "name": "Blazing Saddles Bike Rentals & Tours",
-        "rating": 4.1,
-        "vicinity": "2715 Hyde Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7809098,
-                "lng": -122.4117142
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7823185302915,
-                    "lng": -122.4104349697085
-                },
-                "southwest": {
-                    "lat": 37.7796205697085,
-                    "lng": -122.4131329302915
-                }
-            }
-        },
-        "name": "Huckleberry Bicycles",
-        "rating": 4.7,
-        "vicinity": "Huckleberry Bicycles, 1073 Market Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7665228,
-                "lng": -122.4532875
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7678018302915,
-                    "lng": -122.4518091697085
-                },
-                "southwest": {
-                    "lat": 37.7651038697085,
-                    "lng": -122.4545071302915
-                }
-            }
-        },
-        "name": "American Cyclery",
-        "rating": 4.5,
-        "vicinity": "510 Frederick Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7390085,
-                "lng": -122.4172602
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7404190302915,
-                    "lng": -122.4159020697085
-                },
-                "southwest": {
-                    "lat": 37.7377210697085,
-                    "lng": -122.4186000302915
-                }
-            }
-        },
-        "name": "The New Wheel Electric Bikes",
-        "rating": 4.8,
-        "vicinity": "420 Cortland Avenue, San Francisco"
     },
     {
         "geometry": {
@@ -166,342 +30,6 @@
         "name": "Box Dog Bikes",
         "rating": 4.4,
         "vicinity": "494 14th Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7609808,
-                "lng": -122.4115807
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7623453302915,
-                    "lng": -122.4099669197085
-                },
-                "southwest": {
-                    "lat": 37.7596473697085,
-                    "lng": -122.4126648802915
-                }
-            }
-        },
-        "name": "The Bike Kitchen",
-        "rating": 4.8,
-        "vicinity": "650H Florida Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.76308280000001,
-                "lng": -122.4855866
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7644915302915,
-                    "lng": -122.4842422197085
-                },
-                "southwest": {
-                    "lat": 37.7617935697085,
-                    "lng": -122.4869401802915
-                }
-            }
-        },
-        "name": "Nomad Cyclery",
-        "rating": 4.2,
-        "vicinity": "2555 Irving Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.76801260000001,
-                "lng": -122.453139
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7693494302915,
-                    "lng": -122.4518814697085
-                },
-                "southwest": {
-                    "lat": 37.7666514697085,
-                    "lng": -122.4545794302915
-                }
-            }
-        },
-        "name": "Avenue Cyclery",
-        "rating": 4.8,
-        "vicinity": "756 Stanyan Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.77704,
-                "lng": -122.407791
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7783157302915,
-                    "lng": -122.4063946197085
-                },
-                "southwest": {
-                    "lat": 37.7756177697085,
-                    "lng": -122.4090925802915
-                }
-            }
-        },
-        "name": "Bike Connection",
-        "rating": 4.7,
-        "vicinity": "1090 Folsom Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7966337,
-                "lng": -122.4233637
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7979723302915,
-                    "lng": -122.4220973697085
-                },
-                "southwest": {
-                    "lat": 37.7952743697085,
-                    "lng": -122.4247953302915
-                }
-            }
-        },
-        "name": "Big Swingin' Cycles",
-        "rating": 4.7,
-        "vicinity": "2260 Van Ness Avenue, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7254104,
-                "lng": -122.463086
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7268339302915,
-                    "lng": -122.4616915697085
-                },
-                "southwest": {
-                    "lat": 37.7241359697085,
-                    "lng": -122.4643895302915
-                }
-            }
-        },
-        "name": "Ocean Cyclery",
-        "rating": 4.2,
-        "vicinity": "1935 Ocean Avenue, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.8000584,
-                "lng": -122.43339
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.8014504302915,
-                    "lng": -122.4320496697085
-                },
-                "southwest": {
-                    "lat": 37.7987524697085,
-                    "lng": -122.4347476302915
-                }
-            }
-        },
-        "name": "New Holiday Adventure Sale",
-        "rating": 4.7,
-        "vicinity": "1937 Lombard Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.8021495,
-                "lng": -122.4130941
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.8035485802915,
-                    "lng": -122.4117581197085
-                },
-                "southwest": {
-                    "lat": 37.80085061970851,
-                    "lng": -122.4144560802915
-                }
-            }
-        },
-        "name": "Columbus Cyclery Go Bike It",
-        "rating": 4.3,
-        "vicinity": "2011 Mason Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7888323,
-                "lng": -122.4185479
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7902431802915,
-                    "lng": -122.4171441697085
-                },
-                "southwest": {
-                    "lat": 37.7875452197085,
-                    "lng": -122.4198421302915
-                }
-            }
-        },
-        "name": "3D Bike Fit",
-        "rating": 4.8,
-        "vicinity": "1299 Bush Street suite c, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7745003,
-                "lng": -122.4205554
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7757722302915,
-                    "lng": -122.4191858697085
-                },
-                "southwest": {
-                    "lat": 37.7730742697085,
-                    "lng": -122.4218838302915
-                }
-            }
-        },
-        "name": "Market Street Cycles",
-        "rating": 4.7,
-        "vicinity": "1592 Market Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.773885,
-                "lng": -122.448161
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.77514018029149,
-                    "lng": -122.4468136697085
-                },
-                "southwest": {
-                    "lat": 37.77244221970849,
-                    "lng": -122.4495116302915
-                }
-            }
-        },
-        "name": "Freewheel Bike Shop",
-        "rating": 4.4,
-        "vicinity": "1920 Hayes Street #1126, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7898751,
-                "lng": -122.439792
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7912912802915,
-                    "lng": -122.4384582697085
-                },
-                "southwest": {
-                    "lat": 37.7885933197085,
-                    "lng": -122.4411562302915
-                }
-            }
-        },
-        "name": "Bespoke Cycles",
-        "rating": 4.1,
-        "vicinity": "2843 Clay Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.781654,
-                "lng": -122.387684
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7829885302915,
-                    "lng": -122.3863184697085
-                },
-                "southwest": {
-                    "lat": 37.78029056970851,
-                    "lng": -122.3890164302915
-                }
-            }
-        },
-        "name": "The Bike Hut",
-        "rating": 4.8,
-        "vicinity": "40 Pier Suite #15, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7813758,
-                "lng": -122.4118395
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.78263918029149,
-                    "lng": -122.4104188197085
-                },
-                "southwest": {
-                    "lat": 37.77994121970849,
-                    "lng": -122.4131167802915
-                }
-            }
-        },
-        "name": "Warm Planet Bikes",
-        "rating": 4.6,
-        "vicinity": "1098A Market Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.76902860000001,
-                "lng": -122.4516932
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7703448802915,
-                    "lng": -122.4504006197085
-                },
-                "southwest": {
-                    "lat": 37.7676469197085,
-                    "lng": -122.4530985802915
-                }
-            }
-        },
-        "name": "Bay City Bike Rentals and Tours",
-        "rating": 2.8,
-        "vicinity": "622 Shrader Street, San Francisco"
-    },
-    {
-        "geometry": {
-            "location": {
-                "lat": 37.7626507,
-                "lng": -122.500898
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7639357302915,
-                    "lng": -122.4995425697085
-                },
-                "southwest": {
-                    "lat": 37.76123776970851,
-                    "lng": -122.5022405302915
-                }
-            }
-        },
-        "name": "Swell Bicycles",
-        "rating": 4.7,
-        "vicinity": "4002 Irving Street, San Francisco"
     },
     {
         "geometry": {
@@ -528,6 +56,8 @@
             }
         },
         "name": "Instituto Tecnológico de Oaxaca",
+        "rating": 4.8,
+        "category": "universidad",
         "vicinity": "2662 Taylor Street, San Francisco"
     },
     {
@@ -539,6 +69,7 @@
         },
         "name": "UABJO",
         "rating": 4.8,
+        "category": "universidad",
         "vicinity": "2405 3rd Street, San Francisco"
     },
     {
@@ -550,6 +81,7 @@
         },
         "name": "UABJO Facultad de Medicina",
         "rating": 4.9,
+        "category": "universidad",
         "vicinity": "284 Sanchez Street, San Francisco"
     },
     {
@@ -561,6 +93,7 @@
         },
         "name": "Universidad Anáhuac",
         "rating": 4.4,
+        "category": "universidad",
         "vicinity": "746 Arguello Boulevard, San Francisco"
     },
     {
@@ -572,6 +105,7 @@
         },
         "name": "URSE",
         "rating": 4.2,
+        "category": "universidad",
         "vicinity": "1352 Irving Street, San Francisco"
     },
 
@@ -590,6 +124,8 @@
             }
         },
         "name": "Macro Plaza",
+        "rating": 5,
+        "category": "plaza",
         "vicinity": "1999 Bryant Street, San Francisco"
     },
     {
@@ -600,7 +136,8 @@
             }
         },
         "name": "Plaza del Valle",
-        "rating": 4.6,
+        "rating": 5,
+        "category": "plaza",
         "vicinity": "2157 Lombard Street, San Francisco"
     },
     {
@@ -611,6 +148,8 @@
             }
         },
         "name": "Plaza bella",
+        "rating": 5,
+        "category": "plaza",
         "vicinity": "501 Bay Street, San Francisco"
     },
     {
@@ -621,6 +160,8 @@
             }
         },
         "name": "Plaza Oaxaca",
+        "rating": 5,
+        "category": "plaza",
         "vicinity": "500 Terry A Francois Boulevard, San Francisco"
     },
     {
@@ -632,6 +173,7 @@
         },
         "name": "Plaza Mazari",
         "rating": 5,
+        "category": "plaza",
         "vicinity": "1699 Hawes Street, San Francisco"
     },
 
@@ -644,6 +186,7 @@
         },
         "name": "Oaxaca de Juarez",
         "rating": 5,
+        "category": "Turismo",
         "vicinity": "Prueba"
     }
 ]

@@ -20,7 +20,8 @@ data class PlaceResponse(
     val geometry: Geometry,
     val name: String,
     val vicinity: String,
-    val rating: Float
+    val rating: Float,
+    val category: String
 ) {
 
     data class Geometry(
@@ -37,5 +38,6 @@ fun PlaceResponse.toPlace(): Place = Place(
     name = name,
     latLng = LatLng(geometry.location.lat, geometry.location.lng),
     address = vicinity,
-    rating = rating
+    rating = rating,
+    category = category
 )
