@@ -89,7 +89,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    private val bicycleIcon: BitmapDescriptor by lazy {
+    /*private val bicycleIcon: BitmapDescriptor by lazy {
         val color = ContextCompat.getColor(this, R.color.colorPrimary)
         BitmapHelper.vectorToBitmap(this, R.drawable.ic_directions_bike_black_24dp, color)
     }
@@ -106,5 +106,5 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             // MarkerInfoWindowAdapter
             marker?.tag = place
         }
-    }
+    }*/
 }

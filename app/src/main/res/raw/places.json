@@ -2,36 +2,134 @@
     {
         "geometry": {
             "location": {
-                "lat": 37.7557557,
-                "lng": -122.4208508
+                "lat": 17.05961293749345,
+                "lng": -96.72667773499269
             }
         },
-        "name": "Valencia Cyclery",
-        "rating": 4.2,
-        "category": "bike's store",
-        "vicinity": "1077 Valencia Street, San Francisco"
+        "name": "Mercado Benito Juárez",
+        "rating": 4.8,
+        "category": "Mercado",
+        "vicinity": "1901 Clement Street, San Francisco"
     },
     {
         "geometry": {
             "location": {
-                "lat": 37.7681295,
-                "lng": -122.4240983
-            },
-            "viewport": {
-                "northeast": {
-                    "lat": 37.7694318302915,
-                    "lng": -122.4227560197085
-                },
-                "southwest": {
-                    "lat": 37.7667338697085,
-                    "lng": -122.4254539802915
-                }
+                "lat": 17.05854515379785,
+                "lng": -96.72727561311778
             }
         },
-        "name": "Box Dog Bikes",
-        "rating": 4.4,
-        "category": "bike store",
-        "vicinity": "494 14th Street, San Francisco"
+        "name": "Mercado 20 de Noviembre",
+        "rating": 4.8,
+        "category": "Mercado",
+        "vicinity": "1901 Clement Street, San Francisco"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.055407267539508,
+                "lng": -96.68270064460347
+            }
+        },
+        "name": "Mercado 21 de Marzo",
+        "rating": 4.8,
+        "category": "Mercado",
+        "vicinity": "1901 Clement Street, San Francisco"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.093997190921428,
+                "lng": -96.74771968324255
+            }
+        },
+        "name": "Mercado Zonal Santa Rosa",
+        "rating": 4.8,
+        "category": "Mercado",
+        "vicinity": "1901 Clement Street, San Francisco"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.053737670970374,
+                "lng": -96.70962613477542
+            }
+        },
+        "name": "Mercado 5 señores",
+        "rating": 4.8,
+        "category": "Mercado",
+        "vicinity": "1901 Clement Street, San Francisco"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 16.996109486545016,
+                "lng": -96.75557262929814
+            }
+        },
+        "name": "Centro de Rehabilitación e Inclusión Infantil Teletón (CRIT)",
+        "rating": 4.8,
+        "category": "Hospital",
+        "vicinity": "1901 Clement Street, San Francisco"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.084208648897775,
+                "lng": -96.72287984610173
+            }
+        },
+        "name": "Hospital ISSSTE",
+        "rating": 4.8,
+        "category": "Hospital",
+        "vicinity": "1901 Clement Street, San Francisco"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.08205263432568,
+                "lng": -96.71851352405474
+            }
+        },
+        "name": "Hospital General Dr. Aurelio Valdivieso",
+        "rating": 4.8,
+        "category": "Hospital",
+        "vicinity": "1901 Clement Street, San Francisco"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.07541935456676,
+                "lng": -96.71821708946949
+            }
+        },
+        "name": "Hospital San Lucas",
+        "rating": 4.8,
+        "category": "Hospital",
+        "vicinity": "1901 Clement Street, San Francisco"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.07426994472622,
+                "lng": -96.71496079535737
+            }
+        },
+        "name": "Hospital del Valle",
+        "rating": 4.8,
+        "category": "Hospital",
+        "vicinity": "1901 Clement Street, San Francisco"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.06803045120984,
+                "lng": -96.72167728221555
+            }
+        },
+        "name": "Hospital Reforma",
+        "rating": 4.8,
+        "category": "Hospital",
+        "vicinity": "1901 Clement Street, San Francisco"
     },
     {
         "geometry": {
@@ -42,15 +140,9 @@
         },
         "name": "IMSS Hospital General de Zona 1",
         "rating": 4.8,
-        "category": "hospital",
+        "category": "Hospital",
         "vicinity": "1901 Clement Street, San Francisco"
     },
-
-
-
-
-
-
     {
         "geometry": {
             "location": {
@@ -60,7 +152,7 @@
         },
         "name": "Instituto Tecnológico de Oaxaca",
         "rating": 4.8,
-        "category": "universidad",
+        "category": "Universidad",
         "vicinity": "2662 Taylor Street, San Francisco"
     },
     {
@@ -72,7 +164,7 @@
         },
         "name": "UABJO",
         "rating": 4.8,
-        "category": "universidad",
+        "category": "Universidad",
         "vicinity": "2405 3rd Street, San Francisco"
     },
     {
@@ -84,7 +176,7 @@
         },
         "name": "UABJO Facultad de Medicina",
         "rating": 4.9,
-        "category": "universidad",
+        "category": "Universidad",
         "vicinity": "284 Sanchez Street, San Francisco"
     },
     {
@@ -96,7 +188,7 @@
         },
         "name": "Universidad Anáhuac",
         "rating": 4.4,
-        "category": "universidad",
+        "category": "Universidad",
         "vicinity": "746 Arguello Boulevard, San Francisco"
     },
     {
@@ -108,17 +200,9 @@
         },
         "name": "URSE",
         "rating": 4.2,
-        "category": "universidad",
+        "category": "Universidad",
         "vicinity": "1352 Irving Street, San Francisco"
     },
-
-
-
-
-
-
-
-
     {
         "geometry": {
             "location": {
@@ -128,7 +212,7 @@
         },
         "name": "Macro Plaza",
         "rating": 5,
-        "category": "plaza",
+        "category": "Plaza",
         "vicinity": "1999 Bryant Street, San Francisco"
     },
     {
@@ -140,7 +224,7 @@
         },
         "name": "Plaza del Valle",
         "rating": 5,
-        "category": "plaza",
+        "category": "Plaza",
         "vicinity": "2157 Lombard Street, San Francisco"
     },
     {
@@ -152,7 +236,7 @@
         },
         "name": "Plaza bella",
         "rating": 5,
-        "category": "plaza",
+        "category": "Plaza",
         "vicinity": "501 Bay Street, San Francisco"
     },
     {
@@ -164,7 +248,7 @@
         },
         "name": "Plaza Oaxaca",
         "rating": 5,
-        "category": "plaza",
+        "category": "Plaza",
         "vicinity": "500 Terry A Francois Boulevard, San Francisco"
     },
     {
@@ -176,10 +260,9 @@
         },
         "name": "Plaza Mazari",
         "rating": 5,
-        "category": "plaza",
+        "category": "Plaza",
         "vicinity": "1699 Hawes Street, San Francisco"
     },
-
     {
         "geometry": {
             "location": {
@@ -190,6 +273,54 @@
         "name": "Oaxaca de Juarez",
         "rating": 5,
         "category": "Turismo",
+        "vicinity": "Prueba"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.046622093083524,
+                "lng": -96.63621469255428
+            }
+        },
+        "name": "El Tule",
+        "rating": 5,
+        "category": "Turismo",
+        "vicinity": "Prueba"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.045480083068096,
+                "lng": -96.76746884061338
+            }
+        },
+        "name": "Monte Albán",
+        "rating": 5,
+        "category": "Turismo",
+        "vicinity": "Prueba"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.069119098740533,
+                "lng": -96.69616199440958
+            }
+        },
+        "name": "Instituto Estatal de Educación Pública de Oaxaca (IEEPO)",
+        "rating": 5,
+        "category": "Otros",
+        "vicinity": "Prueba"
+    },
+    {
+        "geometry": {
+            "location": {
+                "lat": 17.066212678335933,
+                "lng": -96.68030570874876
+            }
+        },
+        "name": "Baraimas",
+        "rating": 5,
+        "category": "Cariñosos",
         "vicinity": "Prueba"
     }
 ]

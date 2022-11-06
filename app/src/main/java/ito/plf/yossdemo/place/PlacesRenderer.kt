@@ -1,14 +1,16 @@
 package ito.plf.yossdemo.place
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.ImageDecoder
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import ito.plf.yossdemo.BitmapHelper
 import ito.plf.yossdemo.R
-import ito.plf.yossdemo.place.Place
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.clustering.view.DefaultClusterRenderer
 
@@ -24,7 +26,7 @@ class PlaceRenderer(
     /**
      * The icon to use for each cluster item
      */
-    private val bicycleIcon: BitmapDescriptor by lazy {
+    /*private val bicycleIcon: BitmapDescriptor by lazy {
         val color = ContextCompat.getColor(context,
             R.color.colorPrimary
         )
@@ -33,7 +35,7 @@ class PlaceRenderer(
             R.drawable.ic_directions_bike_black_24dp,
             color
         )
-    }
+    }*/
 
     /**
      * Method called before the cluster item (the marker) is rendered.
@@ -43,9 +45,31 @@ class PlaceRenderer(
         item: Place,
         markerOptions: MarkerOptions
     ) {
-        markerOptions.title(item.name)
-            .position(item.latLng)
-            .icon(bicycleIcon)
+        when(item.category) {
+            "Hospital" -> markerOptions.title(item.name)
+                .position(item.latLng)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.hospital_48))
+            "Turismo" -> markerOptions.title(item.name)
+                .position(item.latLng)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.camera_48))
+            "Plaza" -> markerOptions.title(item.name)
+                .position(item.latLng)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.compras_48))
+            "Mercado" -> markerOptions.title(item.name)
+                .position(item.latLng)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.restaurante_48))
+            "Universidad" -> markerOptions.title(item.name)
+                .position(item.latLng)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.educacion_48))
+            "Cariñosos" -> markerOptions.title(item.name)
+                .position(item.latLng)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.heart_64v2))
+            else -> {
+                markerOptions.title(item.name)
+                    .position(item.latLng)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.informacion_48))
+            }
+        }
     }
 
     /**
