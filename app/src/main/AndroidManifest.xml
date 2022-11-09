@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ito.plf.yossdemo">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YossDemo"
         tools:targetApi="31">
-
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 

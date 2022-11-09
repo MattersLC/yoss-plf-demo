@@ -1,8 +1,16 @@
 package ito.plf.yossdemo
 
+import android.Manifest
+import android.Manifest.permission.ACCESS_FINE_LOCATION
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -10,17 +18,26 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.clustering.ClusterManager
 import ito.plf.yossdemo.databinding.ActivityMapsBinding
 import ito.plf.yossdemo.place.Place
 import ito.plf.yossdemo.place.PlaceRenderer
 import ito.plf.yossdemo.place.PlacesReader
+import java.util.*
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private val TAG = MapsActivity::class.java.simpleName
+    private val REQUEST_LOCATION_PERMISSION = 1
+
+    /*companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
+    }*/
 
     private val places: List<Place> by lazy {
         PlacesReader(this).read()
@@ -44,22 +61,77 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             // Set custom info window adapter.
             // googleMap.setInfoWindowAdapter(MarkerInfoWindowAdapter(this))
         }
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
         // Add a marker in Oaxaca and move the camera
         val oaxaca = LatLng(17.060590930692484, -96.72546242802322)
-        //mMap.addMarker(MarkerOptions().position(oaxaca).title("Oaxaca de Juárez"))
-        //val ITO = LatLng(17.077831563590298, -96.74437901266337)
-        //mMap.addMarker(MarkerOptions().position(ITO).title("ITO"))
-
         mMap.moveCamera(CameraUpdateFactory.newLatLng(oaxaca))
-
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15f), 2000, null)
-        //addMarkers(mMap)
+
+        //setMapLongClick(mMap)
+        //setPoiClick(mMap)
+        //setMapStyle(mMap)
+        enableMyLocation()
+    }
+
+    // Checks that users have given permission
+    private fun isPermissionGranted() : Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    }
+
+    // Checks if users have given their location and sets location enabled if so.
+    private fun enableMyLocation() {
+        if (isPermissionGranted()) {
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return
+            }
+            mMap.isMyLocationEnabled = true
+        }
+        else {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION),
+                REQUEST_LOCATION_PERMISSION
+            )
+        }
+    }
+
+    // Callback for the result from requesting permissions.
+    // This method is invoked for every call on requestPermissions(android.app.Activity, String[],
+    // int).
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        // Check if location permissions are granted and if so enable the
+        // location data layer.
+        if (requestCode == REQUEST_LOCATION_PERMISSION) {
+            if (grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
+                enableMyLocation()
+            }
+        }
     }
 
     /**
@@ -89,22 +161,4 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    /*private val bicycleIcon: BitmapDescriptor by lazy {
-        val color = ContextCompat.getColor(this, R.color.colorPrimary)
-        BitmapHelper.vectorToBitmap(this, R.drawable.ic_directions_bike_black_24dp, color)
-    }
-
-    private fun addMarkers(googleMap: GoogleMap) {
-        places.forEach { place ->
-            val marker = googleMap.addMarker(
-                MarkerOptions()
-                    .title(place.name)
-                    .position(place.latLng)
-                    .icon(bicycleIcon)
-            )
-            // Set place as the tag on the marker object so it can be referenced within
-            // MarkerInfoWindowAdapter
-            marker?.tag = place
-        }
-    }*/
 }

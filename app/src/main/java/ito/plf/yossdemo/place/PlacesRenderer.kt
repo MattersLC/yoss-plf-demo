@@ -48,26 +48,26 @@ class PlaceRenderer(
         when(item.category) {
             "Hospital" -> markerOptions.title(item.name)
                 .position(item.latLng)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.hospital_48))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.add_48))
             "Turismo" -> markerOptions.title(item.name)
                 .position(item.latLng)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.camera_48))
             "Plaza" -> markerOptions.title(item.name)
                 .position(item.latLng)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.compras_48))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.cart_48))
             "Mercado" -> markerOptions.title(item.name)
                 .position(item.latLng)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.restaurante_48))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.shop_48))
             "Universidad" -> markerOptions.title(item.name)
                 .position(item.latLng)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.educacion_48))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.education_48))
             "Cariñosos" -> markerOptions.title(item.name)
                 .position(item.latLng)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.heart_64v2))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.heart_48))
             else -> {
                 markerOptions.title(item.name)
                     .position(item.latLng)
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.informacion_48))
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.marcador_t32))
             }
         }
     }
