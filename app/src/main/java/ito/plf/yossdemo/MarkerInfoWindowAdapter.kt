@@ -1,7 +1,6 @@
 package ito.plf.yossdemo
 
 import android.content.Context
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -13,8 +12,6 @@ class MarkerInfoWindowAdapter(private val context: Context) : GoogleMap.InfoWind
     override fun getInfoContents(marker: Marker): View? {
         // 1. Get tag
         val place = marker.tag as? Place ?: return null
-        //val category = Resources.getSystem().getString(R.string.category)
-        //val categoryFinal = category + place.category
 
         // 2. Inflate view and set title, address and rating
         val view = LayoutInflater.from(context).inflate(R.layout.marker_info_contents, null)
