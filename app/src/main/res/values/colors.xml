@@ -12,4 +12,8 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorPrincipal">#000000</color>
+    <color name="pink">#EC407A</color>
+    <color name="orange">#F44336</color>
+    <color name="mint">#00E5FF</color>
+    <color name="yellow">#FFEB38</color>
 </resources>
