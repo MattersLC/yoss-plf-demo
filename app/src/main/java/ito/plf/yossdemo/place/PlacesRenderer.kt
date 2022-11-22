@@ -56,4 +56,5 @@ class PlaceRenderer(
     override fun onClusterItemRendered(clusterItem: Place, marker: Marker) {
         marker.tag = clusterItem
     }
+
 }

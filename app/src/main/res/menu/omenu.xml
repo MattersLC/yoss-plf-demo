@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/option_get_plazas" android:title="@string/option_get_plazas"></item>
+    <item android:id="@+id/option_get_universities" android:title="@string/option_get_universities"></item>
+    <item android:id="@+id/option_get_hospitals" android:title="@string/option_get_hospitals"></item>
+    <item android:id="@+id/option_get_mercados" android:title="@string/option_get_mercados"></item>
+    <item android:id="@+id/option_get_tourism" android:title="@string/option_get_tourism"></item>
+    <item android:id="@+id/option_get_others" android:title="@string/option_get_others"></item>
+</menu>
