@@ -11,15 +11,15 @@ class FireBaseRepo {
 
     }
 
-    fun getUserData(): String? {
-        var nombre: String? = ""
+    fun getUserData(){
+
         val docRef = db.collection("rutas").document("ruta")
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    Log.d("TAG","DocumentSnapshot data: ${document.data}")
-                    Log.d("TAG","${document.get("first") as String}")
-                    nombre = document.getString("nombre")
+                    val nombre: String? = document.getString("nombre")
+                    val camiones: Int? = document.getLong("num_camiones")?.toInt()
+                    Log.d("TAG","nombre ruta = ${nombre} => cantidad de camiones = ${camiones}")
                 } else {
                     Log.d("TAG","document don't found")
                 }
@@ -28,6 +28,5 @@ class FireBaseRepo {
                 Log.d("TAG","error al obtener $exception")
             }
 
-        return nombre
     }
 }

@@ -52,10 +52,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private val TAG: String = MapsActivity::class.java.getSimpleName()
     private val KEY_CAMERA_POSITION = "camera_position"
     private val KEY_LOCATION = "location"
+    //private lateinit var mapFragment: MapFragment
     // Coordenadas para la creación de las diferentes rutas
     lateinit var initPoint: LatLng
     lateinit var endPoint: LatLng
-    val route: MutableList<LatLng> = mutableListOf()
+    //val route: MutableList<LatLng> = mutableListOf()
     private var lastKnownLocation: Location? = null
     val defaultLocation = LatLng(17.060590930692484, -96.72546242802322)
     val markers: MutableList<Marker> = mutableListOf()
@@ -86,8 +87,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private lateinit var ai: ApplicationInfo
     private lateinit var key: String
     // Conexión con la base de datos
-    val db = FirebaseFirestore.getInstance()
-    private var cant_camiones = 20
+    var db = FirebaseFirestore.getInstance()
+    private var cant_camiones: Int? = 20
     private var nom_ruta: String? = "Nombre de la ruta"
     // Arreglo para almacenar todos los colores ubicados en values/colors.xml
     private val arrayColor = arrayOf(
@@ -128,6 +129,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION)!!
             cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION)
         }
+
+
+        // Conexión con la base de datos
+        //var rutasBD = FirebaseFirestore.getInstance()
+        //db = FireBaseRepo()
 
         ai = applicationContext.packageManager.getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
         val value = ai.metaData["com.google.android.geo.API_KEY"]
@@ -848,18 +854,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         }
     }
 
-    private fun bdConsult(ruta: String): String? {
-        //Obtener un sólo registro/documento
+    private fun getData(ruteador: List<LatLng>, id: Int, ruta: String) {
         val docRef = db.collection("rutas").document(ruta)
         docRef.get()
             .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d("TAG","DocumentSnapshot data: ${document.data}")
-                    Log.d("TAG","${document.get("first") as String}")
-                    //val info = document.getString("nombre")
-                    //Log.d("TAG","DocumentSnapshot NOMBRE ------ : ${info}")
-                    //cant_camiones = document.get(num_camiones)
-                    nom_ruta = document.data?.get("nombre").toString()
+                if (document.exists()) {
+                    val nombre = document.getString("nombre")
+                    val camiones: Int? = document.getLong("num_camiones")?.toInt()
+                    Log.d("TAG","nombre ruta = ${nombre} => cantidad de camiones = ${camiones}")
+                    if (nombre != null && camiones != null) {
+                        animateMarker(ruteador, true, id, camiones, nombre)
+                        controlAnimations(5000, ruteador, true, id, camiones, nombre)
+                        clicks++
+                    }
                 } else {
                     Log.d("TAG","document don't found")
                 }
@@ -868,20 +875,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 Log.d("TAG","error al obtener $exception")
             }
 
-        return nom_ruta
-
-        /* Obtener todos los datos
-        val docRef = db.collection("rutas")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d("TAG","${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d("TAG","error al obtener documentos $exception")
-            }
-         */
     }
 
     // Función utilizada cada que un marcador sea clickeado
@@ -924,32 +917,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 deletePolylines()
                 deleteMarkersAnimations()
                 showRuta10()
-                animateMarker(ruta10, true, 10, 20, nombreRuta10)
-                controlAnimations(10000, ruta10, true, 10, 20, nombreRuta10)
-                clicks++
+                getData(ruta10, 10, "ruta10")
             }
             "MercadoBJ", "Mercado20N" -> {
                 deletePolylines()
                 deleteMarkersAnimations()
                 showRuta03()
-                animateMarker(ruta03, true, 3, 20, nombreRuta03)
-                controlAnimations(10000, ruta03, true, 3, 20, nombreRuta03)
-                clicks++
+                getData(ruta03, 3, "ruta03")
             }
             "Zocalo" -> {
                 deletePolylines()
                 deleteMarkersAnimations()
                 showRuta02()
-                //animateMarker(ruta02, true, db.getIdRuta(2), db.getCamiones(2), db.getNombreRuta(2));
-                //controlAnimations(5000, ruta02, true, db.getIdRuta(2), db.getCamiones(2), db.getNombreRuta(2));
-                //var nombre: String? = bdConsult("ruta02")
-                //if (nombre != null) {
-                    //animateMarker(ruta02, true, 2, 20, nombre)
-                //}
-                //controlAnimations(10000, ruta02, true, 2, 20, nombreRuta02)
-                animateMarker(ruta02, true, 2, 20, nombreRuta02)
-                controlAnimations(10000, ruta02, true, 2, 20, nombreRuta02)
-                clicks++
+                getData(ruta02, 2, "ruta02")
             }
             "ITO", "MercadoZonalSR" -> {
                 deletePolylines()
@@ -993,19 +973,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             "Mercado21M", "MonteAlban" -> {
                 deletePolylines()
                 deleteMarkersAnimations()
-                // ruta 47
-                defineRoute47()
-                val r47 = getDirectionURL(initPoint, endPoint, key)
-                GetDirection(r47).execute()
-                animateMarker(ruta47, true, 47, 20, nombreRuta47)
-                controlAnimations(10000, ruta47, true, 47, 20, nombreRuta47)
-                clicks++
-                /*deletePolylines()
+                deletePolylines()
                 deleteMarkersAnimations()
                 showRuta47()
                 animateMarker(ruta47, true, 47, 20, nombreRuta47)
-                controlAnimations(7500, ruta47, true, 47, 20, nombreRuta47)
-                clicks++*/
+                controlAnimations(12000, ruta47, true, 47, 20, nombreRuta47)
+                clicks++
             }
             "Tule", "URSE" -> {
                 deletePolylines()
@@ -1136,15 +1109,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             val latLng = LatLng((lat.toDouble() / 1E5),(lng.toDouble() / 1E5))
             poly.add(latLng)
         }
-
-        val polyline = mMap.addPolyline(
-            PolylineOptions()
-                .clickable(true)
-                .addAll(poly)
-        )
-        polyline.setTag("POLY")
-        stylePolyline(polyline)
-        polylines.add(polyline)
         return poly
     }
 
@@ -1211,8 +1175,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     fun defineRoute47() {
         initPoint = LatLng(17.056536913872083, -96.75828620870179)
         endPoint = LatLng(17.05549651768387, -96.68130361631837)
-        route.add(initPoint)
-        route.add(endPoint)
     }
 
 }
