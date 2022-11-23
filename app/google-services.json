@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "409428150402",
+    "project_id": "oaxacamovil",
+    "storage_bucket": "oaxacamovil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409428150402:android:b12298dea8c0d2d5c84c9b",
+        "android_client_info": {
+          "package_name": "ito.plf.yossdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409428150402-i2vdqg5rak7p2s7b3r8682r6it19231p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFomMIS-t-myN11dcl6HDZiAGPe2EuCOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409428150402-i2vdqg5rak7p2s7b3r8682r6it19231p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
