@@ -48,21 +48,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     private val REQUEST_LOCATION_PERMISSION = 1
     // Variables para el manejo del mapa, elementos como asignar el zoom, posición de la cámara
     private val DEFAULT_ZOOM = 15
+    private val defaultLocation = LatLng(17.060590930692484, -96.72546242802322) // Coordenadas del centro de Oax
     private var cameraPosition: CameraPosition? = null
     private val TAG: String = MapsActivity::class.java.getSimpleName()
     private val KEY_CAMERA_POSITION = "camera_position"
     private val KEY_LOCATION = "location"
-    //private lateinit var mapFragment: MapFragment
     // Coordenadas para la creación de las diferentes rutas
     lateinit var initPoint: LatLng
     lateinit var endPoint: LatLng
-    //val route: MutableList<LatLng> = mutableListOf()
+    // Última ubicación conocida del dispositivo
     private var lastKnownLocation: Location? = null
-    val defaultLocation = LatLng(17.060590930692484, -96.72546242802322)
+    // Variables para el control de marcadores, polylines y animaciones
     val markers: MutableList<Marker> = mutableListOf()
     val polylines: MutableList<Polyline> = mutableListOf()
     val markers_animations: MutableList<Marker> = mutableListOf()
-    // Arrays con las coordenadas que irán dentro de los polylines
+    // Listas con las coordenadas que irán dentro de los polylines
     private var ruta01: List<LatLng> = java.util.ArrayList()
     private var ruta02: List<LatLng> = java.util.ArrayList()
     private var ruta03: List<LatLng> = java.util.ArrayList()
@@ -118,34 +118,33 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         super.onSaveInstanceState(outState)
     }
 
+    // Esta función se emplea cuando apenas se abre la app
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Retrieve location and camera position from saved instance state.
+        // Recibe localización y posición de cámara de la función anterior
         if (savedInstanceState != null) {
             lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION)!!
             cameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION)
         }
 
-
-        // Conexión con la base de datos
-        //var rutasBD = FirebaseFirestore.getInstance()
-        //db = FireBaseRepo()
-
+        // Esto es para trabajar con el API key de google maps en el código
         ai = applicationContext.packageManager.getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
         val value = ai.metaData["com.google.android.geo.API_KEY"]
         key = value.toString()
 
+        // Detectamos ubicaciones
         if (!Places.isInitialized()) {
             Places.initialize(applicationContext, key)
         }
 
+        // Esto habilita la ubicación del dispositivo
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        // Obtiene un SupportMapFragment y es notificado cuando el mapa está listo para ser usado
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -164,10 +163,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         ruta71 = rutas.ruta71
     }
 
+    // Cuando el mapa está listo para ser utilizado
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
         // Se utiliza un InfoWindowAdapter customizado para que soportar varias líneas de texto en un InfoWindowContents
+        // Poner más de una línea de texto cuando se da click a un marcador
         this.mMap.setInfoWindowAdapter(object : InfoWindowAdapter {
             // Return null here, so that getInfoContents() is called next.
             override fun getInfoWindow(arg0: Marker): View? {
@@ -189,6 +190,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             }
         })
 
+        // Inicia la captura de la ubicación actual del dispositivo
         val locationResult = fusedLocationProviderClient.lastLocation
         locationResult.addOnCompleteListener(
             this
@@ -221,7 +223,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         // Iniciamos el método para obtener la ubicación actual del dispositivo
         enableMyLocation()
 
-        // Definimos un listener para los marcadores de ubicaciones
+        // Definimos un listener para los marcadores de ubicaciones y para los polylines
         mMap.setOnMarkerClickListener(this)
         mMap.setOnPolylineClickListener(this)
     }
@@ -229,8 +231,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     // Se crea un menú de opciones con las diferentes ubicaciones con las que cuenta la app
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.option_get_plazas) { // Plazas
-            deleteAll()
-            showPlazasMarkers()
+            // Cuando se da click en una opción del menú
+            deleteAll() // Elimina todo lo que haya en el mapa (marcadores, polylines, mensajes, etc)
+            showPlazasMarkers() // Muestra únicamente los marcadores de su categoría
         } else if (item.itemId == R.id.option_get_universities) { // Universidades
             deleteAll()
             showUniversitiesMarkers()
@@ -260,7 +263,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
         val markerITO: Marker? = mMap.addMarker(
             MarkerOptions()
                 .position(ITO)
-                .title("ITO")
+                .title("Instituto Tecnológico de Oaxaca")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.education_48))
         )
         markerITO?.tag = "ITO"
@@ -604,6 +607,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
             Toast.makeText(this, getString(R.string.unexpected_error), Toast.LENGTH_LONG).show()
         }
 
+        // línea recta de color sólido
         polyline.endCap = RoundCap()
         polyline.width = POLYLINE_STROKE_WIDTH_PX.toFloat()
         polyline.color = color
@@ -627,7 +631,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
     override fun onPolylineClick(polyline: Polyline) {
         // Alterna entre un patrón de línea a un patrón de puntos para visualizar el Polyline
         if (polyline.pattern == null || !polyline.pattern!!.contains(DOT)) {
-            polyline.pattern = PATTERN_POLYLINE_DOTTED
+            polyline.pattern = PATTERN_POLYLINE_DOTTED // Línea punteada
         } else {
             // The default pattern is a solid stroke.
             polyline.pattern = null
@@ -901,17 +905,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 deletePolylines()
                 deleteMarkersAnimations()
                 showRuta29()
-                animateMarker(ruta29, true, 29, 30, nombreRuta29)
-                controlAnimations(10000, ruta29, true, 29, 20, nombreRuta29)
-                clicks++
+                getData(ruta29, 29, "ruta29")
             }
             "PlazaBella", "Mercado5S" -> {
                 deletePolylines()
                 deleteMarkersAnimations()
                 showRuta71()
-                animateMarker(ruta71, true, 71, 30, nombreRuta71)
-                controlAnimations(10000, ruta71, true, 71, 20, nombreRuta71)
-                clicks++
+                getData(ruta71, 71, "ruta71")
             }
             "PlazaMazari" -> {
                 deletePolylines()
@@ -938,37 +938,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 showRuta02()
                 showRuta29()
                 showRuta62()
-                animateMarker(ruta01, true, 1, 20, nombreRuta01)
-                animateMarker(ruta02, true, 2, 20, nombreRuta02)
-                animateMarker(ruta29, true, 29, 20, nombreRuta29)
-                animateMarker(ruta62, true, 62, 20, nombreRuta62)
-                controlAnimations(9500, ruta01, true, 1, 20, nombreRuta01)
-                controlAnimations(12000, ruta02, true, 2, 20, nombreRuta02)
-                controlAnimations(11500, ruta29, true, 29, 20, nombreRuta29)
-                controlAnimations(10000, ruta62, true, 62, 20, nombreRuta62)
-                clicks++
+                getData(ruta01, 1, "ruta01")
+                getData(ruta02, 2, "ruta02")
+                getData(ruta29, 29, "ruta29")
+                getData(ruta62, 62, "ruta62")
             }
             "ISSSTE", "UABJOMedicina", "HGralAurelio", "IMSS" -> {
                 deletePolylines()
                 deleteMarkersAnimations()
                 showRuta03()
                 showRuta10()
-                animateMarker(ruta03, true, 3, 20, nombreRuta03)
-                animateMarker(ruta10, true, 10, 20, nombreRuta10)
-                controlAnimations(7500, ruta03, true, 3, 20, nombreRuta03)
-                controlAnimations(7500, ruta10, true, 10, 20, nombreRuta10)
-                clicks++
+                getData(ruta03, 3, "ruta03")
+                getData(ruta10, 10, "ruta10")
             }
             "Anahuac", "CRIT" -> {
                 deletePolylines()
                 deleteMarkersAnimations()
                 showRuta27()
                 showRuta03()
-                animateMarker(ruta27, true, 27, 20, nombreRuta27)
-                animateMarker(ruta03, true, 3, 20, nombreRuta03)
-                controlAnimations(7000, ruta27, true, 27, 20, nombreRuta27)
-                controlAnimations(7500, ruta03, true, 3, 20, nombreRuta03)
-                clicks++
+                getData(ruta27, 27, "ruta27")
+                getData(ruta03, 3, "ruta03")
             }
             "Mercado21M", "MonteAlban" -> {
                 deletePolylines()
@@ -976,9 +965,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 deletePolylines()
                 deleteMarkersAnimations()
                 showRuta47()
-                animateMarker(ruta47, true, 47, 20, nombreRuta47)
-                controlAnimations(12000, ruta47, true, 47, 20, nombreRuta47)
-                clicks++
+                getData(ruta47, 47, "ruta47")
             }
             "Tule", "URSE" -> {
                 deletePolylines()
